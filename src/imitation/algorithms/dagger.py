@@ -360,8 +360,8 @@ class DAggerTrainer:
         )
         samples_so_far, batch_num, epoch_num = self.bc_trainer.train(**train_kwargs)
         self.samples_so_far += samples_so_far
-        self.batch_num += batch_num
-        self.epoch_num += epoch_num
+        self.batch_num = batch_num
+        self.epoch_num = epoch_num
         self.round_num += 1
 
         logging.info(f"New round number is {self.round_num}")
