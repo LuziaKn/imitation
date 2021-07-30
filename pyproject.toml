@@ -14,7 +14,7 @@ torch = "^1.4.0"
 tqdm = "^4.61.2"
 stable-baselines3 = "~0.10.0"
 sacred = "0.8.1"
-tensorboard = "^1.14.0"
+tensorboard = "^2"
 scikit-learn = "^0.24.2"
 jax = "~0.2.8"
 
