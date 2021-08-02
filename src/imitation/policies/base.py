@@ -62,4 +62,4 @@ class FeedForward32Policy(policies.ActorCriticPolicy):
     """
 
     def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs, net_arch=[32, 32])
+        super().__init__(*args, **{"net_arch": [32, 32], **kwargs})
