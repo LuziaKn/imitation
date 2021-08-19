@@ -213,9 +213,11 @@ class BC:
         self.policy_kwargs.update(policy_kwargs or {})
         self.device = utils.get_device(device)
 
+
         self.policy = self.policy_class(**self.policy_kwargs).to(
             self.device
         )  # pytype: disable=not-instantiable
+
         optimizer_kwargs = optimizer_kwargs or {}
         self.optimizer = optimizer_cls(self.policy.parameters(), **optimizer_kwargs)
 

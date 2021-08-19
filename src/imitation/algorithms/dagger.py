@@ -168,8 +168,9 @@ class InteractiveTrajectoryCollector(gym.Wrapper):
         assert self._is_reset, "call .reset() before .step()"
 
         # Replace the given action with a robot action 100*(1-beta)% of the time.
+        policy_act = self.get_robot_act(self._last_obs)
         if np.random.uniform(0, 1) > self.beta:
-            actual_act = self.get_robot_act(self._last_obs)
+            actual_act = policy_act
         else:
             actual_act = user_action
 
@@ -179,6 +180,7 @@ class InteractiveTrajectoryCollector(gym.Wrapper):
         self.traj_accum.add_step(
             {"acts": user_action, "obs": next_obs, "rews": reward, "infos": info}
         )
+        self._policy_act = policy_act
 
         # if we're finished, then save the trajectory & print a message
         if done and not self._done_before:
